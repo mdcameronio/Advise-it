@@ -1,10 +1,8 @@
 <?php
 
-//ob_start();
 session_start();
 include("includes/header.php");
-include('database/DataLayter.php');
-include('classes/Plan.php');
+include_once('classes/Plan.php');
 include('classes/validate.php');
 
 ini_set('display_errors',1);

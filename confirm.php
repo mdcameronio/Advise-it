@@ -1,12 +1,12 @@
 <?php
 session_start();
 include("includes/header.php");
-include_once('database/DataLayter.php');
+include_once('database/dataLayer.php');
 include_once('classes/Plan.php');
-include('classes/validate.php');
 
-//echo "confirm wtf";
-$datalayer = new DataLayter();
+
+
+$datalayer = new data();
 $planned = new Plan();
 
 $fall1 = "";
