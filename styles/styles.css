@@ -30,6 +30,14 @@ form{
 #tokenLink{
     text-align: center;
 }
+.notes{
+    /*margin-right: 30px;*/
+}
+textarea{
+    resize: none;
+    width: 100%;
+    max-width: 250px;
+}
 @media(min-width: 600px) {
     form{
         grid-template-columns: repeat(2,1fr);

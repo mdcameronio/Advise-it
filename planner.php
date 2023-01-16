@@ -35,7 +35,9 @@ if(!isset($_GET['token'])){
             </label><br>
              <label>4.
                 <input type="text" name="fall-4">
-            </label>
+            </label><br>
+            <label>Notes </label><br>
+            <textarea name="fall-notes" rows="4" cols="50"></textarea>
         </div>
         <div class="grid-item">Winter<br>
              <label>1.
@@ -49,7 +51,9 @@ if(!isset($_GET['token'])){
             </label><br>
              <label>4.
                 <input type="text" name="winter-4">
-            </label>
+            </label><br>
+            <label>Notes </label><br>
+            <textarea name="winter-notes" rows="4" cols="50"></textarea>
         </div>
         <div class="grid-item">Spring<br>
             <label>1.
@@ -63,7 +67,9 @@ if(!isset($_GET['token'])){
             </label><br>
             <label>4.
                 <input type="text" name="spring-4">
-            </label>
+            </label><br>
+            <label>Notes </label><br>
+            <textarea name="spring-notes" rows="4" cols="50"></textarea>
         </div>
         <div class="grid-item">Summer<br>
             <label>1.
@@ -77,7 +83,9 @@ if(!isset($_GET['token'])){
             </label><br>
             <label>4.
                 <input type="text" name="summer-4">
-            </label>
+            </label><br>
+            <label>Notes </label><br>
+            <textarea name="summer-notes" rows="4" cols="50"></textarea>
         </div><br>
         <?php
         if(!isset($_GET['token']))
