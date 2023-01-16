@@ -14,17 +14,17 @@ class Plan
     private $_summerNotes;
 
 
-    public function __construct()
+    public function __construct($token = " ",$fall =" ",$fallNotes=" ",$winter=" ",$winterNotes=" ",$spring=" ",$springNotes=" ",$summer=" ",$summerNotes=" " )
     {
-        $this->_token = "";
-        $this->_fall = "";
-        $this->_fallNotes = "";
-        $this->_winter = "";
-        $this->_winterNotes = "";
-        $this->_spring = "";
-        $this->_springNotes = "";
-        $this->_summer = "";
-        $this->_summerNotes = "";
+        $this->_token = $token;
+        $this->_fall = $fall;
+        $this->_fallNotes = $fallNotes;
+        $this->_winter = $winter;
+        $this->_winterNotes = $winterNotes;
+        $this->_spring = $spring;
+        $this->_springNotes = $springNotes;
+        $this->_summer = $summer;
+        $this->_summerNotes = $summerNotes;
 
     }
 
