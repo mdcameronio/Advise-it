@@ -12,7 +12,7 @@ class data
         try{
             //instantiate a pdo database object
             $this->_dbh = new PDO(DB_DSN,DB_USERNAME,DB_PASSWORD);
-//            echo "woohoo config hiden new file";
+
 
         }
         catch (PDOException $e){
@@ -20,18 +20,19 @@ class data
         }
     }
 
+    /**
+     * this function saves the plan object to the data base
+     * and returns the id
+     *
+     * @param $plan object
+     * @return string
+     */
     function savePlan($plan)
     {
         //define query
         $sql = "INSERT INTO plan(token, fall1, fall2, fall3, fall4, winter1, winter2, winter3, winter4, spring1, spring2, spring3, spring4, summer1, summer2, summer3, summer4, fall_notes, winter_notes, spring_notes, summer_notes)
                         VALUES (:token,:fall1,:fall2,:fall3,:fall4,:winter1,:winter2,:winter3,:winter4,:spring1,:spring2,:spring3,:spring4,:summer1,:summer2,:summer3,:summer4,:fall_notes,:winter_notes,:spring_notes,:summer_notes)";
 
-
-
-
-
-//        $sql = "INSERT INTO planner( token, fall, winter, spring, summer, fall_notes, winter_notes, spring_notes, summer_notes)
-//                             VALUES (:token,:fall,:winter,:spring,:summer,:fall_notes ,:winter_notes ,:spring_notes,:summer_notes)";
         //prepare statment
         $statement = $this->_dbh->prepare($sql);
         $token =$plan->getToken();
@@ -87,6 +88,12 @@ class data
         return $id;
     }
 
+    /**
+     * this function takes a token and check the datbase if it allready exist the return will be
+     * a array empty if not found or full of tokens it did find
+     * @param $token   6 char string
+     * @return array|false
+     */
     function checkToken($token)
     {
         //define querey
@@ -99,6 +106,29 @@ class data
         $statement->execute();
         //process result
         $result =$statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+
+    }
+
+    /**
+     * this function gets info related to a token
+     * from the data base the return is a assoc array of the tokens row
+     * @param $token 6 char string
+     * @return array|false
+     */
+    function getPlan($token)
+    {
+        //define query
+        $sql = "SELECT * FROM plan WHERE token = :token";
+        //prepar statment
+        $statement = $this->_dbh->prepare($sql);
+        //bind prams
+        $statement->bindParam(':token',$token);
+        //execute querey
+        $statement->execute();
+        //prosess result
+        $result =$statement->fetchAll(PDO::FETCH_ASSOC);
+
         return $result;
 
     }

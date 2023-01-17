@@ -17,7 +17,7 @@
     padding:20px;
     text-align: center;
     border: 1px solid black;
-    /*grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));*/
+
 }
 form{
     display: grid;
@@ -30,9 +30,7 @@ form{
 #tokenLink{
     text-align: center;
 }
-.notes{
-    /*margin-right: 30px;*/
-}
+
 textarea{
     resize: none;
     width: 100%;

@@ -4,7 +4,11 @@ include('database/dataLayer.php');
 class validate
 {
 
-
+    /**
+     * this generates a unique token using letters and numbers as a 6 char string
+     * then checks the data base if it allready exist if it doesent it will return the string
+     * @return string a 6 char unique string
+     */
     static function genToken()
     {
         $tvarify = new data();

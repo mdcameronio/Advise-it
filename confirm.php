@@ -5,10 +5,12 @@ include_once('database/dataLayer.php');
 include_once('classes/Plan.php');
 
 
-
+//creat datalayer object
 $datalayer = new data();
+//create plan object
 $planned = new Plan();
 
+//retrive data entered into form
 $fall1 = "";
 if (!empty($_POST['fall-1'])) {
     $fall1 = $_POST['fall-1'];
@@ -110,9 +112,13 @@ if(!empty($_POST['summer-notes'])){
     $summerNotes = $_POST['summer-notes'];
     $planned->setSummerNotes($summerNotes);
 }
+//get token generated on plan page
 $token = $_SESSION['gentoken'];
+//set token to plan
 $planned->setToken($token);
+//save plan to database
 $id = $datalayer->savePlan($planned);
+
 echo "your plan has been saved id: ".$id."<br>";
 date_default_timezone_set('America/Los_Angeles');
 echo date("l jS \of F Y h:i:s A");
