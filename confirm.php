@@ -116,12 +116,19 @@ if(!empty($_POST['summer-notes'])){
 $token = $_SESSION['gentoken'];
 //set token to plan
 $planned->setToken($token);
+
+$date = $_SESSION['dated'];
+
+$planned->setDate($date);
 //save plan to database
 $id = $datalayer->savePlan($planned);
 
+
 echo "your plan has been saved id: ".$id."<br>";
-date_default_timezone_set('America/Los_Angeles');
-echo date("l jS \of F Y h:i:s A");
+
+
+
+echo $date;
 session_destroy();
 
 

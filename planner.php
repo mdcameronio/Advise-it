@@ -19,12 +19,15 @@ if(!isset($_GET['token'])){
     echo "<div id='tokenLink'><p><a href='https://mcameron.greenriverdev.com/485/Advise-it/planner.php?token=$generatedToken'>Plan Link</a></p><p>$generatedToken</p></div>";
 
     $_SESSION['gentoken'] = $generatedToken;
+    date_default_timezone_set('America/Los_Angeles');
+    $date = date("l jS \of F Y h:i:s A");
+    $_SESSION['dated'] = $date;
 }else{
     $token = $_GET['token'];
     echo "<div id='tokenLink'><p><a href='https://mcameron.greenriverdev.com/485/Advise-it/planner.php?token=$token'>Plan Link</a></p><p>$token</p></div>";
     $getDataLayer = new data();
     $getData = $getDataLayer->getPlan($token);
-    echo "hello line 25 ";
+
     foreach ($getData as $row ) {
 
         $dataToken = $row['token'];
@@ -48,7 +51,7 @@ if(!isset($_GET['token'])){
         $summer3 = $row['summer3'];
         $summer4 = $row['summer4'];
         $summernotes = $row['summer_notes'];
-
+        $lastUpdate = $row['last_update'];
 
 }
 
@@ -58,73 +61,80 @@ if(!isset($_GET['token'])){
 <div class="grid-container">
 
     <form method="post" action="confirm.php">
-        <div class="grid-item">Fall<br>
-             <label>1.
-                <input type="text" name="fall-1" value="<?php if(isset($_GET['token'])){ echo $fall1 ; } ?>">
-            </label><br>
-             <label>2.
-                <input type="text" name="fall-2" value="<?php if(isset($_GET['token'])){ echo $fall2 ; } ?>">
-            </label><br>
-             <label>3.
-                <input type="text" name="fall-3" value="<?php if(isset($_GET['token'])){ echo $fall3 ; } ?>">
-            </label><br>
-             <label>4.
-                <input type="text" name="fall-4" value="<?php if(isset($_GET['token'])){ echo $fall4 ; } ?>">
-            </label><br>
-            <label>Notes </label><br>
-            <textarea name="fall-notes" rows="4" cols="50" ><?php if(isset($_GET['token'])){ echo $fallnotes ; } ?></textarea>
+        <div class="grid-item"><br>
+<!--             <label>1.-->
+<!--                <input type="text" name="fall-1" value="--><?php //if(isset($_GET['token'])){ echo $fall1 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--             <label>2.-->
+<!--                <input type="text" name="fall-2" value="--><?php //if(isset($_GET['token'])){ echo $fall2 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--             <label>3.-->
+<!--                <input type="text" name="fall-3" value="--><?php //if(isset($_GET['token'])){ echo $fall3 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--             <label>4.-->
+<!--                <input type="text" name="fall-4" value="--><?php //if(isset($_GET['token'])){ echo $fall4 ; } ?><!--">-->
+<!--            </label><br>-->
+            <label>Fall </label><br>
+            <textarea name="fall-notes" rows="10" cols="30" ><?php if(isset($_GET['token'])){ echo $fallnotes ; } ?></textarea>
         </div>
-        <div class="grid-item">Winter<br>
-             <label>1.
-                <input type="text" name="winter-1" value="<?php if(isset($_GET['token'])){ echo $winter1 ; } ?>">
-            </label><br>
-             <label>2.
-                <input type="text" name="winter-2" value="<?php if(isset($_GET['token'])){ echo $winter2 ; } ?>">
-            </label><br>
-             <label>3.
-                <input type="text" name="winter-3" value="<?php if(isset($_GET['token'])){ echo $winter3 ; } ?>">
-            </label><br>
-             <label>4.
-                <input type="text" name="winter-4" value="<?php if(isset($_GET['token'])){ echo $winter4 ; } ?>">
-            </label><br>
-            <label>Notes </label><br>
-            <textarea name="winter-notes" rows="4" cols="50"><?php if(isset($_GET['token'])){ echo $winternotes ; } ?></textarea>
+        <div class="grid-item"><br>
+<!--             <label>1.-->
+<!--                <input type="text" name="winter-1" value="--><?php //if(isset($_GET['token'])){ echo $winter1 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--             <label>2.-->
+<!--                <input type="text" name="winter-2" value="--><?php //if(isset($_GET['token'])){ echo $winter2 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--             <label>3.-->
+<!--                <input type="text" name="winter-3" value="--><?php //if(isset($_GET['token'])){ echo $winter3 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--             <label>4.-->
+<!--                <input type="text" name="winter-4" value="--><?php //if(isset($_GET['token'])){ echo $winter4 ; } ?><!--">-->
+<!--            </label><br>-->
+            <label>Winter </label><br>
+            <textarea name="winter-notes" rows="10" cols="30"><?php if(isset($_GET['token'])){ echo $winternotes ; } ?></textarea>
         </div>
-        <div class="grid-item">Spring<br>
-            <label>1.
-                <input type="text" name="spring-1" value="<?php if(isset($_GET['token'])){ echo $spring1 ; } ?>">
-            </label><br>
-            <label>2.
-                <input type="text" name="spring-2" value="<?php if(isset($_GET['token'])){ echo $spring2 ; } ?>">
-            </label><br>
-            <label>3.
-                <input type="text" name="spring-3" value="<?php if(isset($_GET['token'])){ echo $spring3 ; } ?>">
-            </label><br>
-            <label>4.
-                <input type="text" name="spring-4" value="<?php if(isset($_GET['token'])){ echo $spring4 ; } ?>">
-            </label><br>
-            <label>Notes </label><br>
-            <textarea name="spring-notes" rows="4" cols="50"><?php if(isset($_GET['token'])){ echo $springnotes ; } ?></textarea>
+        <div class="grid-item"><br>
+<!--            <label>1.-->
+<!--                <input type="text" name="spring-1" value="--><?php //if(isset($_GET['token'])){ echo $spring1 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--            <label>2.-->
+<!--                <input type="text" name="spring-2" value="--><?php //if(isset($_GET['token'])){ echo $spring2 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--            <label>3.-->
+<!--                <input type="text" name="spring-3" value="--><?php //if(isset($_GET['token'])){ echo $spring3 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--            <label>4.-->
+<!--                <input type="text" name="spring-4" value="--><?php //if(isset($_GET['token'])){ echo $spring4 ; } ?><!--">-->
+<!--            </label><br>-->
+            <label>Spring</label><br>
+            <textarea name="spring-notes" rows="10" cols="30"><?php if(isset($_GET['token'])){ echo $springnotes ; } ?></textarea>
         </div>
-        <div class="grid-item">Summer<br>
-            <label>1.
-                <input type="text" name="summer-1" value="<?php if(isset($_GET['token'])){ echo $summer1 ; } ?>">
-            </label><br>
-            <label>2.
-                <input type="text" name="summer-2" value="<?php if(isset($_GET['token'])){ echo $summer2 ; } ?>">
-            </label><br>
-            <label>3.
-                <input type="text" name="summer-3" value="<?php if(isset($_GET['token'])){ echo $summer3 ; } ?>">
-            </label><br>
-            <label>4.
-                <input type="text" name="summer-4" value="<?php if(isset($_GET['token'])){ echo $summer4 ; } ?>">
-            </label><br>
-            <label>Notes </label><br>
-            <textarea name="summer-notes" rows="4" cols="50"><?php if(isset($_GET['token'])){ echo $summernotes ; } ?></textarea>
+        <div class="grid-item"><br>
+<!--            <label>1.-->
+<!--                <input type="text" name="summer-1" value="--><?php //if(isset($_GET['token'])){ echo $summer1 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--            <label>2.-->
+<!--                <input type="text" name="summer-2" value="--><?php //if(isset($_GET['token'])){ echo $summer2 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--            <label>3.-->
+<!--                <input type="text" name="summer-3" value="--><?php //if(isset($_GET['token'])){ echo $summer3 ; } ?><!--">-->
+<!--            </label><br>-->
+<!--            <label>4.-->
+<!--                <input type="text" name="summer-4" value="--><?php //if(isset($_GET['token'])){ echo $summer4 ; } ?><!--">-->
+<!--            </label><br>-->
+            <label>Summer</label><br>
+            <textarea name="summer-notes" rows="10" cols="30"><?php if(isset($_GET['token'])){ echo $summernotes ; } ?></textarea>
         </div><br>
         <?php
-        if(!isset($_GET['token']))
-       echo ' <input id="theSubmitButton" type="submit" name="submit" value="Submit">';
+        if(!isset($_GET['token'])){
+            echo ' <input id="theSubmitButton" type="submit" name="submit" value="Submit">';
+        }
+
+        if(isset($_GET['token'])){
+
+//            echo ' <input id="theSubmitButton" type="submit" name="submit" value="Save Changes"> '.' Last update: ' .$lastUpdate;;
+            echo "Last update: " .$lastUpdate;
+        }
         ?>
     </form>
 </div>

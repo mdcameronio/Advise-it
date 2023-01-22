@@ -5,53 +5,86 @@ class Plan
 {
 
     private $_token;
-    private $_fall1;
-    private $_fall2;
-    private $_fall3;
-    private $_fall4;
+//    private $_fall1;
+//    private $_fall2;
+//    private $_fall3;
+//    private $_fall4;
     private $_fallNotes;
-    private $_winter1;
-    private $_winter2;
-    private $_winter3;
-    private $_winter4;
+//    private $_winter1;
+//    private $_winter2;
+//    private $_winter3;
+//    private $_winter4;
     private $_winterNotes;
-    private $_spring1;
-    private $_spring2;
-    private $_spring3;
-    private $_spring4;
+//    private $_spring1;
+//    private $_spring2;
+//    private $_spring3;
+//    private $_spring4;
     private $_springNotes;
-    private $_summer1;
-    private $_summer2;
-    private $_summer3;
-    private $_summer4;
+//    private $_summer1;
+//    private $_summer2;
+//    private $_summer3;
+//    private $_summer4;
     private $_summerNotes;
+    private $_date;
 
-
-    public function __construct($token = " ",$fall1 =" ",$fall2 =" ",$fall3 =" ",$fall4 =" ",$fallNotes=" ",$winter1=" ",$winter2=" ",$winter3=" ",$winter4=" ",$winterNotes=" ",$spring1=" ",$spring2=" ",$spring3=" ",$spring4=" ",$springNotes=" ",$summer1=" ",$summer2=" ",$summer3=" ",$summer4=" ",$summerNotes=" " )
+//    public function __construct($token = " ",$fall1 =" ",$fall2 =" ",$fall3 =" ",$fall4 =" ",$fallNotes=" ",$winter1=" ",$winter2=" ",$winter3=" ",$winter4=" ",$winterNotes=" ",$spring1=" ",$spring2=" ",$spring3=" ",$spring4=" ",$springNotes=" ",$summer1=" ",$summer2=" ",$summer3=" ",$summer4=" ",$summerNotes=" " )
+//    {
+//        $this->_token = $token;
+//        $this->_fall1 = $fall1;
+//        $this->_fall2 = $fall2;
+//        $this->_fall3 = $fall3;
+//        $this->_fall4 = $fall4;
+//        $this->_fallNotes = $fallNotes;
+//        $this->_winter1 = $winter1;
+//        $this->_winter2 = $winter2;
+//        $this->_winter3 = $winter3;
+//        $this->_winter4 = $winter4;
+//        $this->_winterNotes = $winterNotes;
+//        $this->_spring1 = $spring1;
+//        $this->_spring2 = $spring2;
+//        $this->_spring3 = $spring3;
+//        $this->_spring4 = $spring4;
+//        $this->_springNotes = $springNotes;
+//        $this->_summer1 = $summer1;
+//        $this->_summer2 = $summer2;
+//        $this->_summer3 = $summer3;
+//        $this->_summer4 = $summer4;
+//        $this->_summerNotes = $summerNotes;
+//
+//    }
+    /**
+     * @param $_token
+     * @param $_fallNotes
+     * @param $_winterNotes
+     * @param $_springNotes
+     * @param $_summerNotes
+     */
+    public function __construct($_token=" ", $_fallNotes=" ", $_winterNotes=" ", $_springNotes = " ", $_summerNotes=" ",$_date=" ")
     {
-        $this->_token = $token;
-        $this->_fall1 = $fall1;
-        $this->_fall2 = $fall2;
-        $this->_fall3 = $fall3;
-        $this->_fall4 = $fall4;
-        $this->_fallNotes = $fallNotes;
-        $this->_winter1 = $winter1;
-        $this->_winter2 = $winter2;
-        $this->_winter3 = $winter3;
-        $this->_winter4 = $winter4;
-        $this->_winterNotes = $winterNotes;
-        $this->_spring1 = $spring1;
-        $this->_spring2 = $spring2;
-        $this->_spring3 = $spring3;
-        $this->_spring4 = $spring4;
-        $this->_springNotes = $springNotes;
-        $this->_summer1 = $summer1;
-        $this->_summer2 = $summer2;
-        $this->_summer3 = $summer3;
-        $this->_summer4 = $summer4;
-        $this->_summerNotes = $summerNotes;
-
+        $this->_token = $_token;
+        $this->_fallNotes = $_fallNotes;
+        $this->_winterNotes = $_winterNotes;
+        $this->_springNotes = $_springNotes;
+        $this->_summerNotes = $_summerNotes;
+        $this->_date = $_date;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->_date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        $this->_date = $date;
+    }
+
 
     /**
      * @return string
