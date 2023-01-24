@@ -113,6 +113,13 @@ if(!empty($_POST['summer-notes'])){
     $summerNotes = $_POST['summer-notes'];
     $planned->setSummerNotes($summerNotes);
 }
+$advisor="";
+if(!empty($_POST['advisor'])){
+
+    $advisor = $_POST['advisor'];
+    echo "line 120 advisor ". $advisor;
+    $planned->setAdvisor($advisor);
+}
 
 if(isset($_SESSION['edit'])){
     date_default_timezone_set('America/Los_Angeles');

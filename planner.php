@@ -41,6 +41,7 @@ if(!isset($_GET['token'])){
         $springnotes = $row['spring_notes'];
 
         $summernotes = $row['summer_notes'];
+        $advisor = $row['advisor'];
         $lastUpdate = $row['last_update'];
 
 }
@@ -67,6 +68,9 @@ if(!isset($_GET['token'])){
             <label for="summer">Summer</label><br>
             <textarea id="summer" name="summer-notes" rows="10" cols="30"><?php if(isset($_GET['token'])){ echo $summernotes ; } ?></textarea>
         </div>
+        <label for="advisor">advisor
+        <input id="advisor" name="advisor" type="text" value="<?php if(isset($_GET['token'])){ echo $advisor ; } ?>">
+        </label>
         <?php
         if(!isset($_GET['token'])){
             echo ' <input id="theSubmitButton" type="submit" name="submit" value="Submit">';

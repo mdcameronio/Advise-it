@@ -10,6 +10,7 @@ class Plan
     private $_springNotes;
     private $_summerNotes;
     private $_date;
+    private $_advisor;
 
 
     /**
@@ -19,7 +20,7 @@ class Plan
      * @param $_springNotes
      * @param $_summerNotes
      */
-    public function __construct($_token=" ", $_fallNotes=" ", $_winterNotes=" ", $_springNotes = " ", $_summerNotes=" ",$_date=" ")
+    public function __construct($_token=" ", $_fallNotes=" ", $_winterNotes=" ", $_springNotes = " ", $_summerNotes=" ",$_date=" ",$_advisor=" ")
     {
         $this->_token = $_token;
         $this->_fallNotes = $_fallNotes;
@@ -27,6 +28,23 @@ class Plan
         $this->_springNotes = $_springNotes;
         $this->_summerNotes = $_summerNotes;
         $this->_date = $_date;
+        $this->_advisor = $_advisor;
+    }
+
+    /**
+     * @return mixed|string
+     */
+    public function getAdvisor()
+    {
+        return $this->_advisor;
+    }
+
+    /**
+     * @param mixed|string $advisor
+     */
+    public function setAdvisor($advisor)
+    {
+        $this->_advisor = $advisor;
     }
 
     /**

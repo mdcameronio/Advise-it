@@ -30,8 +30,8 @@ class data
     function savePlan($plan)
     {
         //define query
-        $sql = "INSERT INTO plan(token,  fall_notes, winter_notes, spring_notes, summer_notes,last_update)
-                        VALUES (:token,:fall_notes,:winter_notes,:spring_notes,:summer_notes,:last_update)";
+        $sql = "INSERT INTO plan(token,  fall_notes, winter_notes, spring_notes, summer_notes,last_update,advisor)
+                        VALUES (:token,:fall_notes,:winter_notes,:spring_notes,:summer_notes,:last_update,:advisor)";
 
         //prepare statment
         $statement = $this->_dbh->prepare($sql);
@@ -42,7 +42,8 @@ class data
         $springnote = $plan->getSpringNotes();
         $summernote = $plan->getSummerNotes();
         $lastUpdate = $plan->getDate();
-
+        $advisor = $plan->getAdvisor();
+        echo "line 46 data lyer ".$advisor;
         //bind params
         $statement->bindParam(':token',$token);
         $statement->bindParam(':fall_notes',$fallnote);
@@ -50,6 +51,7 @@ class data
         $statement->bindParam(':spring_notes',$springnote);
         $statement->bindParam(':summer_notes',$summernote);
         $statement->bindParam(':last_update',$lastUpdate);
+        $statement->bindParam(':advisor',$advisor);
         //exicute querey
         $statement->execute();
 
@@ -66,7 +68,7 @@ class data
      */
     function updatePlan($planned){
 
-        $sql = "  UPDATE plan SET fall_notes=:fall_notes, winter_notes =:winter_notes,spring_notes= :spring_notes,summer_notes= :summer_notes,last_update=:last_update WHERE  token = :token ";
+        $sql = "  UPDATE plan SET fall_notes=:fall_notes, winter_notes =:winter_notes,spring_notes= :spring_notes,summer_notes= :summer_notes,last_update=:last_update,advisor=:advisor WHERE  token = :token ";
 
         $statement = $this->_dbh->prepare($sql);
         $token =$planned->getToken();
@@ -75,6 +77,7 @@ class data
         $springNotes = $planned->getSpringNotes();
         $summerNotes = $planned->getSummerNotes();
         $lastUpdate = $planned->getDate();
+        $advisor = $planned->getAdvisor();
 
         $statement->bindParam(':token',$token);
         $statement->bindParam(':fall_notes',$fallNotes);
@@ -82,6 +85,7 @@ class data
         $statement->bindParam(':spring_notes',$springNotes);
         $statement->bindParam(':summer_notes',$summerNotes);
         $statement->bindParam(':last_update',$lastUpdate);
+        $statement->bindParam(':advisor',$advisor);
         $statement->execute();
 
         //prosess results
