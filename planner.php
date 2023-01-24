@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-include("includes/header.php");
+include("includes/header.html");
 include_once('classes/Plan.php');
 include('classes/validate.php');
 include_once('database/dataLayer.php');
