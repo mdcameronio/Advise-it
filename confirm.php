@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include("includes/header.php");
 include_once('database/dataLayer.php');
@@ -112,23 +113,37 @@ if(!empty($_POST['summer-notes'])){
     $summerNotes = $_POST['summer-notes'];
     $planned->setSummerNotes($summerNotes);
 }
-//get token generated on plan page
-$token = $_SESSION['gentoken'];
-//set token to plan
-$planned->setToken($token);
 
-$date = $_SESSION['dated'];
+if(isset($_SESSION['edit'])){
+    date_default_timezone_set('America/Los_Angeles');
+    $date = date("l jS \of F Y h:i:s A");
 
-$planned->setDate($date);
-//save plan to database
-$id = $datalayer->savePlan($planned);
+    $updateToken = $_SESSION['token'];
 
+    $planned->setToken($updateToken);
+//    $date = $_SESSION['dated'];
+    $planned->setDate($date);
+    $id = $datalayer->updatePlan($planned);
+}
+else{
+    date_default_timezone_set('America/Los_Angeles');
+    $date = date("l jS \of F Y h:i:s A");
 
-echo "your plan has been saved id: ".$id."<br>";
+    //get token generated on plan page
+    $token = $_SESSION['gentoken'];
+    //set token to plan
+    $planned->setToken($token);
 
+    $planned->setDate($date);
+    //save plan to database
+    $id = $datalayer->savePlan($planned);
 
+}
 
-echo $date;
+echo "your plan has been saved <br>";
+
+echo $date . "<br>";
+echo '<a  href="https://mcameron.greenriverdev.com/485/Advise-it/index.php">home</a>';
 session_destroy();
-
+ob_flush();
 

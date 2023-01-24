@@ -1,6 +1,7 @@
 <?php
 include("includes/header.php");
 session_destroy();
+
 ?>
 <div id="header-text">
 
