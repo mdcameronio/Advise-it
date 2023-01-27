@@ -117,7 +117,7 @@ $advisor="";
 if(!empty($_POST['advisor'])){
 
     $advisor = $_POST['advisor'];
-    echo "line 120 advisor ". $advisor;
+
     $planned->setAdvisor($advisor);
 }
 

@@ -6,23 +6,60 @@ include_once('classes/Plan.php');
 include_once('database/dataLayer.php');
 ini_set('display_errors',1);
 error_reporting(E_ALL);
+
+
+if(isset($_POST['name'])&&isset($_POST['password'])){
+    if($_POST['name']=="admin"&&$_POST['password']=="admin"){
+
+        $getDat = new data();
+
+       $allplan = $getDat->getAllPlans();
+
+
+
+
+
+
+
+    }else{
+        echo "<h1>please enter valid name and password</h1>";
+        echo '<input type="button" value="back" onclick="history.back()"/>';
+        session_destroy();
+    }
+
+
+
+}
 ?>
 
+<div>
+    <h2 class="adheader">Admin</h2>
+</div>
+<table>
+    <tr>
+        <th>token</th>
+        <th>fall</th>
+        <th>winter</th>
+        <th>spring</th>
+        <th>summer</th>
+        <th>advisor</th>
+        <th>last update</th>
+    </tr>
 
-    <div class="card">
-        <div class="container">
-            <form id="adform" action="admin.php" method="post">
-                <label>Name:
-                 <input type="text" name="name">
-                </label><br>
-                <label>password:
-                <input type="password" name="password">
-                </label><br>
-                <input type="submit">
-            </form>
-        </div>
+    <?php
+    foreach ($allplan as $row ) {
+        echo "<tr>";
+        echo "<td>". $row['token']."</td> ";
+        echo "<td>". $row['fall_notes']."</td> ";
+        echo "<td>". $row['winter_notes']."</td> ";
+        echo "<td>". $row['spring_notes']."</td> ";
+        echo "<td>". $row['summer_notes']."</td> ";
+        echo "<td>". $row['advisor']."</td> ";
+        echo "<td>". $row['last_update']."</td> ";
 
-    </div>
+echo " </tr>";
+    }
 
+    ?>
 
-
+</table>

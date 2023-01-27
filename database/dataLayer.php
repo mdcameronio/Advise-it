@@ -43,7 +43,6 @@ class data
         $summernote = $plan->getSummerNotes();
         $lastUpdate = $plan->getDate();
         $advisor = $plan->getAdvisor();
-        echo "line 46 data lyer ".$advisor;
         //bind params
         $statement->bindParam(':token',$token);
         $statement->bindParam(':fall_notes',$fallnote);
@@ -136,6 +135,21 @@ class data
         $result =$statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
+
+    }
+
+    function getAllPlans(){
+
+        $sql = "SELECT * FROM plan ";
+
+        $statment =$this->_dbh->prepare($sql);
+
+        $statment->execute();
+         $result = $statment->fetchAll(PDO::FETCH_ASSOC);
+
+         return $result;
+
+
 
     }
 

@@ -8,7 +8,7 @@ session_destroy();
 <h2 >Home</h2>
 
 <button onclick="window.location.href='planner.php';">Create New</button><br>
-    <button id="hadbutton" onclick="window.location.href='admin.php';">admin</button>
+    <button id="hadbutton" onclick="window.location.href='login.php';">admin</button>
 </div>
 </body>
 </html>

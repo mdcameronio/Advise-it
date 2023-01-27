@@ -51,7 +51,7 @@ if(!isset($_GET['token'])){
 ?>
 <div class="grid-container">
 
-    <form method="post" action="confirm.php">
+    <form id="planform" method="post" action="confirm.php">
         <div class="grid-item"><br>
             <label for="fall">Fall </label><br>
             <textarea id="fall" name="fall-notes" rows="10" cols="30" ><?php if(isset($_GET['token'])){ echo $fallnotes ; } ?></textarea>
