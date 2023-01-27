@@ -8,15 +8,6 @@ ini_set('display_errors',1);
 error_reporting(E_ALL);
 
 
-//if(isset($_POST['name'])&&isset($_POST['password'])){
-//        if($_POST['name']=="admin"&&$_POST['password']=="admin"){
-//            echo "your in!";
-//
-//        }else{
-//            echo "<h1>please enter valid name and password</h1>";
-//        }
-//}
-
 ?>
 
 <div>
