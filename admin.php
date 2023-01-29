@@ -7,35 +7,43 @@ include_once('database/dataLayer.php');
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-
-if(isset($_POST['name'])&&isset($_POST['password'])){
-    if($_POST['name']=="admin"&&$_POST['password']=="admin"){
-
-        $getDat = new data();
-
-       $allplan = $getDat->getAllPlans();
-
-
-
-
-
-
-
-    }else{
-        echo "<h1>please enter valid name and password</h1>";
-        echo '<input type="button" value="back" onclick="history.back()"/>';
-        session_destroy();
-    }
-
-
-
-}
 ?>
 
 <div>
     <h2 class="adheader">Admin</h2>
 </div>
-<table>
+
+<?php
+if(empty($_POST['name']) && empty($_POST['password'])) {
+     echo "<h1>please enter a name and password</h1>";
+    echo '<input type="button" value="back" onclick="history.back()"/><br>';
+    exit();
+
+}
+if(isset($_POST['name'])&&isset($_POST['password'])) {
+    if ($_POST['name'] != "admin" && $_POST['password'] != "admin") {
+
+
+        echo "<h1>please enter valid name and password</h1>";
+        echo '<input type="button" value="back" onclick="history.back()"/>';
+        exit();
+
+    }
+}
+
+
+if(isset($_POST['name'])&&isset($_POST['password'])) {
+     if ($_POST['name'] == "admin" && $_POST['password'] == "admin") {
+
+
+         $getDat = new data();
+
+         $allplan = $getDat->getAllPlans();
+
+         echo '<a  href="https://mcameron.greenriverdev.com/485/Advise-it/index.php">home</a>';
+
+
+         echo "<table>
     <tr>
         <th>token</th>
         <th>fall</th>
@@ -44,22 +52,24 @@ if(isset($_POST['name'])&&isset($_POST['password'])){
         <th>summer</th>
         <th>advisor</th>
         <th>last update</th>
-    </tr>
+    </tr>";
 
-    <?php
-    foreach ($allplan as $row ) {
-        echo "<tr>";
-        echo "<td>". $row['token']."</td> ";
-        echo "<td>". $row['fall_notes']."</td> ";
-        echo "<td>". $row['winter_notes']."</td> ";
-        echo "<td>". $row['spring_notes']."</td> ";
-        echo "<td>". $row['summer_notes']."</td> ";
-        echo "<td>". $row['advisor']."</td> ";
-        echo "<td>". $row['last_update']."</td> ";
 
-echo " </tr>";
-    }
+         foreach ($allplan as $row) {
+             echo "<tr>";
+             echo "<td>" . $row['token'] . "</td> ";
+             echo "<td>" . $row['fall_notes'] . "</td> ";
+             echo "<td>" . $row['winter_notes'] . "</td> ";
+             echo "<td>" . $row['spring_notes'] . "</td> ";
+             echo "<td>" . $row['summer_notes'] . "</td> ";
+             echo "<td>" . $row['advisor'] . "</td> ";
+             echo "<td>" . $row['last_update'] . "</td> ";
 
-    ?>
+             echo " </tr>";
+         }
 
-</table>
+         echo "</table >";
+     }
+ }
+
+?>
