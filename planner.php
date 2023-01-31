@@ -24,11 +24,19 @@ if(!isset($_GET['token'])){
 
     $_SESSION['gentoken'] = $generatedToken;
 
-}else{
+}
+
+
+else{
     $token = $_GET['token'];
     echo "<div id='tokenLink'><p><a href='https://mcameron.greenriverdev.com/485/Advise-it/planner.php?token=$token'>Plan Link</a></p><p>$token</p></div>";
     $getDataLayer = new data();
     $getData = $getDataLayer->getPlan($token);
+    if(sizeof($getData)==0)
+    {
+        echo '<a  href="https://mcameron.greenriverdev.com/485/Advise-it/index.php">home</a><br>';
+        exit("plan was not saved");
+    }
 
     foreach ($getData as $row ) {
 
